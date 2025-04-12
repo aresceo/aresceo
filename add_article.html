@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Aggiungi Nuovo Articolo</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" id="articleForm">
+                    <div class="mb-3">
+                        <label for="titolo" class="form-label">Titolo</label>
+                        <input type="text" class="form-control" id="titolo" name="titolo" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="contenuto" class="form-label">Contenuto</label>
+                        <textarea class="form-control" id="contenuto" name="contenuto" rows="8" required></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="immagine" class="form-label">Immagine (opzionale)</label>
+                        <input type="file" class="form-control" id="immagine" accept="image/*">
+                        <div class="form-text">Seleziona un'immagine per il tuo articolo</div>
+                    </div>
+                    
+                    <div id="imagePreviewContainer" class="mb-3 d-none">
+                        <label class="form-label">Anteprima Immagine</label>
+                        <div class="position-relative">
+                            <img id="imagePreview" class="img-fluid rounded" src="" alt="Anteprima immagine">
+                            <button type="button" id="removeImage" class="btn btn-sm btn-danger position-absolute top-0 end-0">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <input type="hidden" id="immagine_data" name="immagine_data">
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('home') }}" class="btn btn-secondary">Annulla</a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Pubblica Articolo
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/add_article.js') }}"></script>
+{% endblock %}

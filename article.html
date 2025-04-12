@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="article-container">
+    <div class="mb-4 d-flex justify-content-between align-items-center">
+        <a href="{{ url_for('home') }}" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left"></i> Torna alla Home
+        </a>
+        
+        {% if current_user.is_authenticated and current_user.is_admin %}
+        <form action="{{ url_for('elimina_articolo', articolo_id=articolo.id) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo articolo?');">
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Elimina articolo
+            </button>
+        </form>
+        {% endif %}
+    </div>
+    
+    <article>
+        <header>
+            <h1 class="mb-3">{{ articolo.titolo }}</h1>
+            <div class="text-muted mb-4">
+                <i class="far fa-calendar-alt"></i> Pubblicato il {{ articolo.data }}
+            </div>
+        </header>
+        
+        {% if articolo.immagine_data %}
+        <div class="article-full-image mb-4">
+            <img src="{{ articolo.immagine_data }}" class="img-fluid rounded" alt="{{ articolo.titolo }}">
+        </div>
+        {% endif %}
+        
+        <div class="article-content">
+            {{ articolo.contenuto | safe }}
+        </div>
+    </article>
+</div>
+{% endblock %}

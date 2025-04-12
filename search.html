@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Cerca Articoli</h1>
+
+<div class="row mb-4">
+    <div class="col-md-8 mx-auto">
+        <div class="input-group">
+            <input type="text" id="searchInput" class="form-control" placeholder="Cerca articoli...">
+            <button class="btn btn-primary" type="button" id="searchButton">
+                <i class="fas fa-search"></i> Cerca
+            </button>
+        </div>
+        <div class="form-text">Cerca per titolo o contenuto</div>
+    </div>
+</div>
+
+<div id="searchResults" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+
+<div id="noResults" class="alert alert-info text-center d-none">
+    Nessun articolo trovato per la tua ricerca.
+</div>
+
+<div id="initialMessage" class="text-center text-muted">
+    <p><i class="fas fa-search fa-3x mb-3"></i></p>
+    <p>Inserisci un termine di ricerca qui sopra per trovare articoli.</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+{% endblock %}

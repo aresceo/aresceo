@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Ultime Notizie</h1>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for articolo in articoli %}
+    <div class="col">
+        <div class="card h-100">
+            {% if articolo.immagine_data %}
+            <div class="card-img-top article-image" style="background-image: url('{{ articolo.immagine_data }}');"></div>
+            {% else %}
+            <div class="card-img-top article-image article-no-image">
+                <i class="fas fa-newspaper"></i>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ articolo.titolo }}</h5>
+                <p class="card-text text-truncate">{{ articolo.contenuto }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">{{ articolo.data }}</small>
+                    <a href="{{ url_for('visualizza_articolo', articolo_id=articolo.id) }}" class="btn btn-sm btn-outline-primary">Leggi di più</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

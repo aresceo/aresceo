@@ -1,0 +1,54 @@
+/* General styling */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Article cards */
+.article-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.article-no-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    font-size: 3rem;
+}
+
+/* Article view page */
+.article-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-full-image {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* Search page */
+#initialMessage {
+    margin-top: 100px;
+}
+
+/* Image preview on add article page */
+#imagePreviewContainer {
+    max-width: 300px;
+}
